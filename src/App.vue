@@ -12,6 +12,8 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <p class="welcome-text">Selamat datang di proyek Vue + Vite!</p>
+
 </template>
 
 <style scoped>
