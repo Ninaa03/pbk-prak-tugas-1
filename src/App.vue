@@ -1,11 +1,21 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 
 const isDark = ref(false)
+const currentTime = ref('')
 
+// Update class body saat tema berubah
 watch(isDark, (val) => {
   document.body.className = val ? 'dark' : ''
+})
+
+// Update waktu setiap detik
+onMounted(() => {
+  setInterval(() => {
+    const now = new Date()
+    currentTime.value = now.toLocaleTimeString()
+  }, 1000)
 })
 </script>
 
@@ -19,9 +29,19 @@ watch(isDark, (val) => {
     </a>
   </div>
 
-  <HelloWorld msg="Vite + Vue" />
-  <p class="welcome-text">Selamat datang di proyek Vue + Vite!</p>
-  <button @click="isDark = !isDark" class="theme-toggle">
+  <HelloWorld msg="Vite + Vue dengan jam realtime" />
+
+  <p class="welcome-text">
+    Selamat datang di proyek Vue + Vite!
+    <br />
+    Sekarang pukul: <strong>{{ currentTime }}</strong>
+  </p>
+
+  <button
+    @click="isDark = !isDark"
+    class="theme-toggle"
+    :title="`Ganti ke tema ${isDark ? 'Terang' : 'Gelap'}`"
+  >
     Ganti ke {{ isDark ? 'Terang' : 'Gelap' }}
   </button>
 </template>
@@ -56,6 +76,7 @@ watch(isDark, (val) => {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 .theme-toggle:hover {
@@ -64,7 +85,7 @@ watch(isDark, (val) => {
 </style>
 
 <style>
-/* Style global (tidak scoped) */
+/* Style global */
 body.dark {
   background-color: #121212;
   color: #e0e0e0;
