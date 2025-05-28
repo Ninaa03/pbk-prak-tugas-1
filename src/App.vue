@@ -42,7 +42,7 @@ onMounted(() => {
     class="theme-toggle"
     :title="`Ganti ke tema ${isDark ? 'Terang' : 'Gelap'}`"
   >
-    Ganti ke {{ isDark ? 'Terang' : 'Gelap' }}
+    {{ isDark ? '🌙 Mode Gelap' : '🌞 Mode Terang' }}
   </button>
 </template>
 
@@ -91,3 +91,4 @@ body.dark {
   color: #e0e0e0;
 }
 </style>
+m
