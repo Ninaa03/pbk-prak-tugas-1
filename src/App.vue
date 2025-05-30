@@ -41,6 +41,8 @@ onMounted(() => {
   <p class="welcome-text">
     🎉 Selamat datang di proyek <strong>Vue + Vite</strong> interaktif!
     <br />
+    <h5>SERI MEHULINA BR SINULINGGA</h5>
+    <H5>233510650</H5>
     🕒 Sekarang pukul: <strong>{{ currentTime }}</strong>
   </p>
 
